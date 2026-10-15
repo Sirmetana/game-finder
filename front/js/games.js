@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import {CONFIG} from "./config.js";
 
 let gamesResult = getGames();
 
@@ -15,7 +15,7 @@ for (let i = 0; i < gamesResult.lenght; i++) {
     card.href = `games.html/${gamesResult[i].id}`;
 
     const cover = document.createElement("div");
-     cover.classList.add("cover tone-5");
+     cover.class = "cover";
 
 
     const coverLabel = document.createElement("span");
@@ -63,7 +63,7 @@ for (let i = 0; i < gamesResult.lenght; i++) {
 
     card.appendChild(cover);
     card.appendChild(cardBody);
-
+    li.appendChild(card);
 
 }
 

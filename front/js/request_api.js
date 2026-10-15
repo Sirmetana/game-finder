@@ -86,11 +86,10 @@ export async function getRecentGames()
     const today = new Date();
     const aMonthAgo = new Date(new Date().setMonth(parseInt(today.getMonth()-1)));
 
-    const todayFormatted = today.getFullYear() + "-" + (today.getMonth() +1) + "-" + today.getDate();
-    const aMonthAgoFormatted = aMonthAgo.getFullYear() + "-" + (aMonthAgo.getMonth() +1) + "-" + aMonthAgo.getDate();
+    const todayFormatted = today.getFullYear() + "-" + ( (today.getMonth()+1) < 10 ? ("0" +(today.getMonth()+1)) : (today.getMonth()+1) ) + "-" + today.getDate();
+    const aMonthAgoFormatted = aMonthAgo.getFullYear() + "-" + ( (aMonthAgo.getMonth()+1) < 10 ? ("0" +(aMonthAgo.getMonth()+1)) : (aMonthAgo.getMonth()+1) ) + "-" + aMonthAgo.getDate();
 
     const req = `${apiUrl}/games?key=${apiKey}&dates=${aMonthAgoFormatted},${todayFormatted}&ordering=-release`;
-    console.log(req);
     try {
         const response = await fetch(req);
         if(!response.ok)

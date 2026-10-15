@@ -2,8 +2,11 @@ package com.game_finder.back.services;
 
 import com.game_finder.back.dtos.FavoriteResponse;
 import com.game_finder.back.entities.Favorite;
+import com.game_finder.back.entities.FavoriteId;
 import com.game_finder.back.repositories.FavoriteRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +27,16 @@ public class FavoriteService {
                         el.getCreatedAt()
                 ))
                 .toList();
+    }
+
+    public FavoriteResponse addFavorite(UUID userId, Integer gameId) {
+        FavoriteId id = new FavoriteId(gameId, userId);
+        if (favoriteRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Favoris déjà existant");
+        }
+        Favorite favorite = new Favorite(id);
+        Favorite savedFavorite = favoriteRepository.save(favorite);
+        return new FavoriteResponse(savedFavorite.getId().getGameId(), savedFavorite.getCreatedAt());
     }
 
 }

@@ -2,10 +2,9 @@ package com.game_finder.back.controller;
 
 import com.game_finder.back.dtos.FavoriteResponse;
 import com.game_finder.back.services.FavoriteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.constraints.Min;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,5 +23,11 @@ public class FavoriteController {
     @GetMapping
     public List<FavoriteResponse> getFavorites(@RequestHeader(USER_ID_HEADER) UUID userId) {
         return favoriteService.getFavoritesByUser(userId);
+    }
+
+    @PostMapping("/{gameId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public FavoriteResponse addFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId){
+        return favoriteService.addFavorite(userId, gameId);
     }
 }
