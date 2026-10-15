@@ -71,7 +71,7 @@ for (let i = 0; i < gameGenresResult.lenght; i++) {
 
 const gamesPlatforms = document.querySelector("#game-platforms");
 
-const gamesgamesPlatformsResult = gameInfo.platforms;
+const gamesPlatformsResult = gameInfo.platforms;
 
 for (let j = 0; j < gamesgamesPlatformsResult.lenght; j++) {
 
