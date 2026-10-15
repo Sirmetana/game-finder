@@ -39,4 +39,12 @@ public class FavoriteService {
         return new FavoriteResponse(savedFavorite.getId().getGameId(), savedFavorite.getCreatedAt());
     }
 
+    public void removeFavorite(UUID userId, Integer gameId) {
+        FavoriteId id = new FavoriteId(gameId, userId);
+        if (!favoriteRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ce jeu n'est pas dans vos favoris");
+        }
+        favoriteRepository.deleteById(id);
+    }
+
 }

@@ -27,7 +27,13 @@ public class FavoriteController {
 
     @PostMapping("/{gameId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public FavoriteResponse addFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId){
+    public FavoriteResponse addFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId) {
         return favoriteService.addFavorite(userId, gameId);
+    }
+
+    @DeleteMapping("/{gameId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId) {
+        favoriteService.removeFavorite(userId, gameId);
     }
 }
