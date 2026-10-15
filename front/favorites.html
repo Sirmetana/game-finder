@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes favoris · Game Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Icônes : <svg><use href="#i-..."></use></svg> -->
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.5 0 5.4 3.5 4.1 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"></path></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"></circle><path d="M4.5 20c1.3-3.6 4.2-5.4 7.5-5.4s6.2 1.8 7.5 5.4"></path></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19zM12 10v4.5M12 17.3v.2"></path></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="4"></rect><path d="M8 11v4M6 13h4M15.5 12.5h.01M17.5 14.5h.01"></path></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"></path></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="index.html" aria-label="Game Finder, accueil">
+        <svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true"><rect x="2" y="6" width="32" height="24" rx="8" fill="#FFB224"></rect><circle cx="12" cy="18" r="3.2" fill="#0D1015"></circle><rect x="21" y="16" width="8" height="4" rx="2" fill="#0D1015"></rect></svg>
+        <span class="display logo__text">Game Finder</span>
+      </a>
+
+      <form class="site-search" role="search" action="index.html">
+        <label for="search-input" class="sr-only">Rechercher un jeu</label>
+        <div class="search">
+          <svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input id="search-input" name="search" type="search" placeholder="Rechercher un jeu…" autocomplete="off">
+          <kbd class="search__kbd">/</kbd>
+        </div>
+      </form>
+
+      <nav class="site-nav" aria-label="Principale">
+        <a class="nav-link" href="favorites.html" aria-current="page">Favoris</a>
+        <a class="nav-link" href="my-games.html">Mes jeux</a>
+        <div class="profile">
+          <button class="icon-btn profile__btn" id="profile-button" type="button" aria-expanded="false" aria-controls="profile-menu" aria-label="Menu du profil">
+            <svg class="icon i-stroke i-thin" width="20" height="20" aria-hidden="true"><use href="#i-user"></use></svg>
+          </button>
+          <div class="menu" id="profile-menu" hidden>
+            <div class="menu__head">
+              <p class="menu__title">Visiteur anonyme</p>
+              <p class="menu__sub">Votre compte est lié à ce navigateur</p>
+            </div>
+            <a href="favorites.html" aria-current="page"><svg class="icon icon--accent i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-heart"></use></svg>Mes favoris</a>
+            <a href="my-games.html"><svg class="icon i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-gamepad"></use></svg>Mes jeux</a>
+            <a href="#" id="nickname-link"><svg class="icon i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-pen"></use></svg>Mon pseudo d’avis</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page wrap">
+    <div class="page-head">
+      <div class="page-head__text">
+        <h1 class="display h1--page">Mes favoris</h1>
+        <p class="muted" id="favorites-count">8 jeux mis de côté</p>
+      </div>
+      <div class="select-field" id="favorites-sort-field">
+        <label for="favorites-sort">Trier par</label>
+        <select class="select" id="favorites-sort">
+          <option value="recent">Ajout récent</option>
+          <option value="title">Titre A → Z</option>
+        </select>
+      </div>
+    </div>
+
+    <ul class="list-reset game-grid" id="favorites-grid">
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-1"><span class="cover-label">Clair Obscur: Expedition 33</span></div>
+          <div class="card-body">
+            <p class="card-title">Clair Obscur: Expedition 33</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-10-14">14 oct.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Clair Obscur: Expedition 33 des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-2"><span class="cover-label">Hades II</span></div>
+          <div class="card-body">
+            <p class="card-title">Hades II</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-10-12">12 oct.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Hades II des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-3"><span class="cover-label">Balatro</span></div>
+          <div class="card-body">
+            <p class="card-title">Balatro</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-10-09">9 oct.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Balatro des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-8"><span class="cover-label">Blue Prince</span></div>
+          <div class="card-body">
+            <p class="card-title">Blue Prince</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-10-05">5 oct.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Blue Prince des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-4"><span class="cover-label">Hollow Knight: Silksong</span></div>
+          <div class="card-body">
+            <p class="card-title">Hollow Knight: Silksong</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-09-28">28 sept.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Hollow Knight: Silksong des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-6"><span class="cover-label">Split Fiction</span></div>
+          <div class="card-body">
+            <p class="card-title">Split Fiction</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-09-20">20 sept.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Split Fiction des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-9"><span class="cover-label">Astro Bot</span></div>
+          <div class="card-body">
+            <p class="card-title">Astro Bot</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-09-11">11 sept.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Astro Bot des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+      <li class="card-wrap">
+        <a class="card" href="game.html">
+          <div class="cover tone-11"><span class="cover-label">Animal Well</span></div>
+          <div class="card-body">
+            <p class="card-title">Animal Well</p>
+            <p class="card-meta">Ajouté le <time datetime="2026-09-02">2 sept.</time></p>
+          </div>
+        </a>
+        <button class="icon-btn card-remove" type="button" aria-label="Retirer Animal Well des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </li>
+    </ul>
+
+    <!-- État : aucun favori -->
+    <div class="state" id="favorites-empty" hidden>
+      <div class="state__icon"><svg class="icon i-stroke i-thin" width="32" height="32" aria-hidden="true"><use href="#i-heart"></use></svg></div>
+      <h2 class="state__title">Votre étagère est vide… pour l’instant</h2>
+      <p class="state__text">Cliquez sur le cœur d’une fiche jeu : il viendra se ranger ici, prêt pour votre prochaine soirée.</p>
+      <div class="state__actions">
+        <a class="btn btn-primary" href="index.html">Explorer les jeux</a>
+      </div>
+    </div>
+
+    <!-- État : erreur -->
+    <div class="state state--error" id="favorites-error" role="alert" hidden>
+      <div class="state__icon"><svg class="icon i-stroke i-thin" width="30" height="30" aria-hidden="true"><use href="#i-warning"></use></svg></div>
+      <h2 class="state__title">Impossible de joindre le serveur</h2>
+      <p class="state__text">Vos favoris n’ont pas pu être chargés. Réessayez dans quelques instants.</p>
+      <button class="btn btn-secondary" id="favorites-retry" type="button">Réessayer</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>Game Finder</span>
+      <span>Données fournies par <a href="https://rawg.io" rel="noopener">RAWG</a></span>
+    </div>
+  </footer>
+
+  <!-- Carte favori, clonée par le JS -->
+  <template id="tpl-favorite-card">
+    <li class="card-wrap">
+      <a class="card" href="game.html">
+        <div class="cover">
+          <img class="cover__img" src="" alt="" loading="lazy">
+        </div>
+        <div class="card-body">
+          <p class="card-title"></p>
+          <p class="card-meta">Ajouté le <time datetime=""></time></p>
+        </div>
+      </a>
+      <button class="icon-btn card-remove" type="button" aria-label="Retirer des favoris" title="Retirer des favoris"><svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-close"></use></svg></button>
+    </li>
+  </template>
+</body>
+</html>
