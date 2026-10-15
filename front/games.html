@@ -246,16 +246,6 @@
         <button class="btn btn-secondary" id="games-retry" type="button">Réessayer</button>
       </div>
 
-      <nav class="pager" id="pager" aria-label="Pagination">
-        <span class="pager__disabled" aria-disabled="true">‹ Préc.</span>
-        <a class="pager__num" href="?page=1" aria-current="page">1</a>
-        <a class="pager__num" href="?page=2">2</a>
-        <a class="pager__num" href="?page=3">3</a>
-        <span class="pager__gap" aria-hidden="true">…</span>
-        <a class="pager__num" href="?page=500">500</a>
-        <span class="pager__status">Page <strong>1</strong> / 500</span>
-        <a href="?page=2">Suiv. ›</a>
-      </nav>
     </section>
   </main>
 
@@ -281,7 +271,7 @@
       </a>
     </li>
   </template>
-  <script src="js/request_api.js"></script>
-  <script src="js/games.js"></script>
+  <script type="module" src="js/request_api.js"></script>
+  <script type="module" src="js/games.js"></script>
 </body>
 </html>

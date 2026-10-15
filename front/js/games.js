@@ -1,54 +1,60 @@
-import {CONFIG} from "./config.js";
+import { getGames } from "./request_api.js";
 
-let gamesResult = getGames();
+const result = await getGames();
 
-gamesResult = gamesResult.results;
+const gamesResult = result.results;
+console.log("Résultat :", gamesResult);
+console.log("Type :", typeof gamesResult);
 
-for (let i = 0; i < gamesResult.lenght; i++) {
+for (let i = 0; i < gamesResult.length; i++) {
 
     const gridGames = document.querySelector("#game-grid");
 
     const li = document.createElement("li");
    
     const card = document.createElement("a");
-    card.class = "card";
-    card.href = `games.html/${gamesResult[i].id}`;
+    card.className = "card";
+    card.href = `game.html?id=${gamesResult[i].id}`;
 
     const cover = document.createElement("div");
-     cover.class = "cover";
+     cover.className = "cover";
+    cover.style.backgroundImage = `url("${gamesResult[i].background_image}")`;
 
 
     const coverLabel = document.createElement("span");
-    coverLabel.class ="cover-label";
+    coverLabel.className ="cover-label";
     coverLabel.textContent = gamesResult[i].name;
 
     const cardBody = document.createElement("div");
-    cardBody.class ="card-body";
+    cardBody.className ="card-body";
 
     const cardTitle = document.createElement("p");
-     cardTitle.class = "card-title";
+     cardTitle.className = "card-title";
      cardTitle.textContent = gamesResult[i].name;
 
     const cardMeta = document.createElement("p");
-    cardMeta.class = "card-meta";
+    cardMeta.className = "card-meta";
 
-    const svg = document.querySelector("svg");
-    svg.classList.add("icon i-fill star");
+    const svg = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg"
+    );
+    svg.setAttribute("class", "icon i-fill star");
 
-    svg.width = "13";
-    svg.height = "13";
-    svg.aria-hidden == "true";
+    svg.setAttribute("width", "13");
+    svg.setAttribute("height", "13");
+    svg.hidden = true;
 
     const use = document.createElement("use");
      use.href="#i-star";
 
-     svg.appendChilduse(use);
+     svg.appendChild(use);
 
 
-    const rating = document.createElement(span);
+    const rating = document.createElement("span");
     rating.textContent = gamesResult[i].rating;
-  const span= cocument.createElement("span");
-  span.ria-hidden == "true";
+  const span= document.createElement("span");
+   svg.hidden = true;
     const released = document.createElement("span");
     released.textContent = gamesResult[i].released;
    
@@ -64,6 +70,7 @@ for (let i = 0; i < gamesResult.lenght; i++) {
     card.appendChild(cover);
     card.appendChild(cardBody);
     li.appendChild(card);
+    gridGames.appendChild(li);
 
 }
 

@@ -1,32 +1,12 @@
-
+import { getGamesByCategory } from "./request_api.js";
 const params = new URLSearchParams(window.location.search);
 const genre = params.get("genre");
 
 
 
-async function gameCategory(genre) {
-  try {
 
-    const url = `https://api.rawg.io/api/games?key=ae1fa64719ad429ca20709d15d791c2f&genres=${genre}&ordering=-rating`;
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Category "${genre}" introuvable (code ${response.status})`);
-    }
-
-    const category = await response.json();
-
-     category.results;
-
-    return category.results;
-
-  } catch (error) {
-    console.error("Erreur :", error.message);
-  }
-}
-
-const categoryResult = gameCategory(genre);
-
+let  categoryResult =  await getGamesByCategory(genre);
+ categoryResult = categoryResult.results;
 
 for (let i = 0; i < categoryResult.length; i++) {
 
@@ -34,47 +14,54 @@ for (let i = 0; i < categoryResult.length; i++) {
 
   const gridGames = document.querySelector("#game-grid");
 
+
+
+
   const li = document.createElement("li");
 
   const card = document.createElement("a");
-  card.class = "card";
-  card.href = `games.html/${categoryResult[i].id}`;
+  card.className = "card";
+  card.href = `game.html?id=${[i].id}`;
 
   const cover = document.createElement("div");
-  cover.class= "cover";
+  cover.className= "cover";
+   cover.style.backgroundImage = `url("${categoryResult[i].background_image}")`;
 
 
   const coverLabel = document.createElement("span");
-  coverLabel.class = "cover-label";
+  coverLabel.className = "cover-label";
   coverLabel.textContent = categoryResult[i].name;
 
   const cardBody = document.createElement("div");
-  cardBody.class = "card-body";
+  cardBody.className = "card-body";
 
   const cardTitle = document.createElement("p");
-  cardTitle.class = "card-title";
+  cardTitle.className = "card-title";
   cardTitle.textContent = categoryResult[i].name;
 
   const cardMeta = document.createElement("p");
   cardMeta.class = "card-meta";
 
-  const svg = document.querySelector("svg");
-  svg.classList.add("icon i-fill star");
+   const svg = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg"
+    );
+   svg.setAttribute("class", "icon i-fill star");
 
-  svg.width = "13";
-  svg.height = "13";
-  svg.aria - hidden == "true";
+   svg.setAttribute("width", "13");
+    svg.setAttribute("height", "13");
+    svg.hidden = true;
 
   const use = document.createElement("use");
   use.href = "#i-star";
 
-  svg.appendChilduse(use);
+  svg.appendChild(use);
 
 
-  const rating = document.createElement(span);
+  const rating = document.createElement("span");
   rating.textContent = categoryResult[i].rating;
-  const span = cocument.createElement("span");
-  span.ria - hidden == "true";
+  const span = document.createElement("span");
+  span.hidden = true;
   const released = document.createElement("span");
   released.textContent = categoryResult[i].released;
 
@@ -90,6 +77,7 @@ for (let i = 0; i < categoryResult.length; i++) {
   card.appendChild(cover);
   card.appendChild(cardBody);
   li.appendChild(card);
+  gridGames.appendChild(li);
 
 }
 

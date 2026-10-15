@@ -1,3 +1,6 @@
+
+
+
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
 
@@ -27,13 +30,16 @@ async function giveGameDetails(gameId) {
 }
 
 
-const gameInfo = giveGameDetails(gameId);
+const gameInfo = await  giveGameDetails(gameId);
 const gameContent = document.querySelector("#game-content");
 
-const imgGame = document.createElement("img");
-imgGame.src = gameInfo.background_image;
+const divimageOne= document.querySelector("#game-hero");
+divimageOne.style.backgroundImage = `url("${ gameInfo.background_image}")`;
 
-imgGame.class = "hero__img";
+const divimageTwo = document.querySelector("#game-poster");
+divimageTwo.style.backgroundImage = `url("${ gameInfo.background_image}")`;
+
+
 
 const titleGame = document.querySelector(".cover-label");
 
@@ -48,8 +54,8 @@ const gamereleased = document.querySelector("#game-released");
 gamereleased.textContent = gameInfo.released;
 
 
-const gameDevloper = document.querySelector("#game-developer");
-gameDevloper.textContent = gameInfo.developers[0];
+const gameDeveloper = document.querySelector("#game-developer");
+gameDeveloper.textContent = gameInfo.developers.name;
 
 const gameRating = document.querySelector("#game-rating");
 gameRating.textContent = gameInfo.rating;
@@ -63,7 +69,7 @@ for (let i = 0; i < gameGenresResult.lenght; i++) {
 
   const genre = document.createElement("span");
   genre.textContent = gameGenresResult[i].name;
-  genre.classList.add("badge badge-genre");
+  genre.classList.add("badge , badge-genre");
   gameGenres.appendChild(genre)
 
 }
@@ -73,11 +79,11 @@ const gamesPlatforms = document.querySelector("#game-platforms");
 
 const gamesPlatformsResult = gameInfo.platforms;
 
-for (let j = 0; j < gamesgamesPlatformsResult.lenght; j++) {
+for (let j = 0; j < gamesPlatformsResult.length; j++) {
 
   const platform = document.createElement("span");
-  platform.textContent = gamesgamesPlatformsResult[i].name;
-  platform.lassList.add("badge badge-platform");
+  platform.textContent = gamesPlatformsResult[j].name;
+  platform.className = "badge badge-platform";
   gamesPlatforms.appendChild(platform);
 
 }
