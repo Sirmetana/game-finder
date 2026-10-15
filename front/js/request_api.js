@@ -47,7 +47,7 @@ export async function getGameById(id)
     const apiUrl = CONFIG.RAWG_URL;
 
     try {
-        const response = await fetch(`${apiUrl}/games/${id}?key=${apiKey}&ordering=-rating`);
+        const response = await fetch(`${apiUrl}/games/${id}?key=${apiKey}`);
         if(!response.ok)
         {
             throw Error(response.statusText);
@@ -84,12 +84,12 @@ export async function getRecentGames()
     const apiKey = CONFIG.RAWG_API_KEY;
     const apiUrl = CONFIG.RAWG_URL;
     const today = new Date();
-    const aMonthAgo = new Date(new Date().setMonth(today.getMonth()));
+    const aMonthAgo = new Date(new Date().setMonth(parseInt(today.getMonth()-1)));
 
-    const todayFormatted = today.getFullYear() + "-" + parseInt(today.getMonth() +1) + "-" + today.getDate();
-    const aMonthAgoFormatted = aMonthAgo.getFullYear() + "-" + parseInt(aMonthAgo.getMonth() +1) + "-" + aMonthAgo.getDate();
+    const todayFormatted = today.getFullYear() + "-" + (today.getMonth() +1) + "-" + today.getDate();
+    const aMonthAgoFormatted = aMonthAgo.getFullYear() + "-" + (aMonthAgo.getMonth() +1) + "-" + aMonthAgo.getDate();
 
-    const req = `${apiUrl}/games?key=${apiKey}&dates=${aMonthAgoFormatted},${todayFormatted}&ordering=-rating`;
+    const req = `${apiUrl}/games?key=${apiKey}&dates=${aMonthAgoFormatted},${todayFormatted}&ordering=-release`;
     console.log(req);
     try {
         const response = await fetch(req);
