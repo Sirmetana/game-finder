@@ -19,18 +19,20 @@ public class FavoriteController {
     public FavoriteController(FavoriteService favoriteService) {
         this.favoriteService = favoriteService;
     }
-
+    @CrossOrigin("http://localhost:63342")
     @GetMapping
     public List<FavoriteResponse> getFavorites(@RequestHeader(USER_ID_HEADER) UUID userId) {
         return favoriteService.getFavoritesByUser(userId);
     }
 
+    @CrossOrigin("http://localhost:63342")
     @PostMapping("/{gameId}")
     @ResponseStatus(HttpStatus.CREATED)
     public FavoriteResponse addFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId) {
         return favoriteService.addFavorite(userId, gameId);
     }
 
+    @CrossOrigin("http://localhost:63342")
     @DeleteMapping("/{gameId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeFavorite(@RequestHeader(USER_ID_HEADER) UUID userId, @Min(1) @PathVariable Integer gameId) {
