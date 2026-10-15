@@ -648,10 +648,36 @@ textarea {
   color: var(--text);
 }
 
-.pill[aria-pressed="true"] {
+/* Pill active : bouton enfoncé, ou lien vers la page courante */
+.pill[aria-pressed="true"],
+.pill[aria-current="page"] {
   background: var(--text);
   border-color: var(--text);
   color: var(--bg);
+}
+
+/* Fil d'Ariane */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.breadcrumb a {
+  color: var(--text-nav);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--text);
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
 }
 
 /* Badges */

@@ -43,6 +43,7 @@
       </form>
 
       <nav class="site-nav" aria-label="Principale">
+        <a class="nav-link" href="games.html">Jeux</a>
         <a class="nav-link" href="favorites.html">Favoris</a>
         <a class="nav-link" href="my-games.html">Mes jeux</a>
         <div class="profile">
@@ -65,22 +66,22 @@
 
   <main id="main" class="page">
 
-    <!-- Genres (slug RAWG dans data-genre, vide = tous) -->
-    <section class="wrap" aria-labelledby="genres-title">
-      <h2 id="genres-title" class="sr-only">Genres</h2>
+    <!-- Genres : « Tous » ouvre games.html, un genre ouvre category.html?genre=<slug RAWG> -->
+    <nav class="wrap" aria-labelledby="genres-title">
+      <h2 id="genres-title" class="sr-only">Parcourir par genre</h2>
       <div class="pill-row" id="genre-list">
-        <button class="pill" type="button" aria-pressed="true" data-genre="">Tous</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="action">Action</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="role-playing-games-rpg">RPG</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="indie">Indé</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="adventure">Aventure</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="strategy">Stratégie</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="shooter">Shooter</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="racing">Course</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="puzzle">Puzzle</button>
-        <button class="pill" type="button" aria-pressed="false" data-genre="platformer">Plateforme</button>
+        <a class="pill" href="games.html">Tous</a>
+        <a class="pill" href="category.html?genre=action">Action</a>
+        <a class="pill" href="category.html?genre=role-playing-games-rpg">RPG</a>
+        <a class="pill" href="category.html?genre=indie">Indé</a>
+        <a class="pill" href="category.html?genre=adventure">Aventure</a>
+        <a class="pill" href="category.html?genre=strategy">Stratégie</a>
+        <a class="pill" href="category.html?genre=shooter">Shooter</a>
+        <a class="pill" href="category.html?genre=racing">Course</a>
+        <a class="pill" href="category.html?genre=puzzle">Puzzle</a>
+        <a class="pill" href="category.html?genre=platformer">Plateforme</a>
       </div>
-    </section>
+    </nav>
 
     <!-- Sorties récentes : carrousel -->
     <section class="wrap section" id="recent-section" aria-labelledby="recent-title">
