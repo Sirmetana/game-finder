@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clair Obscur: Expedition 33 · Game Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Icônes : <svg><use href="#i-..."></use></svg> -->
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.5 0 5.4 3.5 4.1 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"></path></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"></circle><path d="M4.5 20c1.3-3.6 4.2-5.4 7.5-5.4s6.2 1.8 7.5 5.4"></path></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19zM12 10v4.5M12 17.3v.2"></path></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="4"></rect><path d="M8 11v4M6 13h4M15.5 12.5h.01M17.5 14.5h.01"></path></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"></path></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="index.html" aria-label="Game Finder, accueil">
+        <svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true"><rect x="2" y="6" width="32" height="24" rx="8" fill="#FFB224"></rect><circle cx="12" cy="18" r="3.2" fill="#0D1015"></circle><rect x="21" y="16" width="8" height="4" rx="2" fill="#0D1015"></rect></svg>
+        <span class="display logo__text">Game Finder</span>
+      </a>
+
+      <form class="site-search" role="search" action="index.html">
+        <label for="search-input" class="sr-only">Rechercher un jeu</label>
+        <div class="search">
+          <svg class="icon i-stroke" width="18" height="18" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input id="search-input" name="search" type="search" placeholder="Rechercher un jeu…" autocomplete="off">
+          <kbd class="search__kbd">/</kbd>
+        </div>
+      </form>
+
+      <nav class="site-nav" aria-label="Principale">
+        <a class="nav-link" href="favorites.html">Favoris</a>
+        <a class="nav-link" href="my-games.html">Mes jeux</a>
+        <div class="profile">
+          <button class="icon-btn profile__btn" id="profile-button" type="button" aria-expanded="false" aria-controls="profile-menu" aria-label="Menu du profil">
+            <svg class="icon i-stroke i-thin" width="20" height="20" aria-hidden="true"><use href="#i-user"></use></svg>
+          </button>
+          <div class="menu" id="profile-menu" hidden>
+            <div class="menu__head">
+              <p class="menu__title">Visiteur anonyme</p>
+              <p class="menu__sub">Votre compte est lié à ce navigateur</p>
+            </div>
+            <a href="favorites.html"><svg class="icon icon--accent i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-heart"></use></svg>Mes favoris</a>
+            <a href="my-games.html"><svg class="icon i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-gamepad"></use></svg>Mes jeux</a>
+            <a href="#" id="nickname-link"><svg class="icon i-stroke i-thin" width="18" height="18" aria-hidden="true"><use href="#i-pen"></use></svg>Mon pseudo d’avis</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page page--flush">
+
+    <!-- Contenu de la fiche (l'id RAWG est lu dans l'URL : game.html?id=...) -->
+    <div id="game-content">
+      <!-- Le JS ajoute <img class="hero__img" src="background_image" alt=""> dans .hero -->
+      <div class="hero tone-1" id="game-hero">
+        <div class="wrap hero__bar">
+          <a class="icon-btn hero__back" href="index.html" aria-label="Retour à la liste">
+            <svg class="icon i-stroke" width="20" height="20" aria-hidden="true"><use href="#i-chevron-left"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="wrap game-layout">
+        <div class="cover cover--poster tone-1" id="game-poster">
+          <span class="cover-label">Clair Obscur: Expedition 33</span>
+        </div>
+
+        <div class="game-heading">
+          <h1 class="display h1" id="game-title">Clair Obscur: Expedition 33</h1>
+          <p class="game-meta">
+            <time id="game-released" datetime="2025-04-24">24 avril 2025</time>
+            <span aria-hidden="true">·</span>
+            <span id="game-developer">Sandfall Interactive</span>
+            <span aria-hidden="true">·</span>
+            <span class="game-meta__rating">
+              <svg class="icon i-fill star" width="18" height="18" aria-hidden="true"><use href="#i-star"></use></svg>
+              <strong id="game-rating">4,8</strong><span class="muted">/ 5 RAWG</span>
+            </span>
+          </p>
+        </div>
+
+        <div class="game-actions">
+          <button class="btn btn-secondary btn-block fav" id="fav-button" type="button" aria-pressed="false">
+            <svg class="icon i-stroke i-thin heart" width="18" height="18" aria-hidden="true"><use href="#i-heart"></use></svg>
+            <span id="fav-label">Ajouter aux favoris</span>
+          </button>
+
+          <div class="game-actions__status" role="group" aria-labelledby="status-label">
+            <p class="eyebrow" id="status-label">Mon statut</p>
+            <div class="seg" id="status-group">
+              <button type="button" aria-pressed="true" data-status="PLAYED">Joué</button>
+              <button type="button" aria-pressed="false" data-status="PLAYING">En cours</button>
+              <button type="button" aria-pressed="false" data-status="WANT_TO_PLAY">Envie d’y jouer</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-main">
+          <dl class="facts">
+            <div>
+              <dt class="eyebrow">Genres</dt>
+              <dd class="badge-row" id="game-genres">
+                <span class="badge badge-genre">RPG</span>
+                <span class="badge badge-genre">Aventure</span>
+              </dd>
+            </div>
+            <div>
+              <dt class="eyebrow">Plateformes</dt>
+              <dd class="badge-row" id="game-platforms">
+                <span class="badge badge-platform">PC</span>
+                <span class="badge badge-platform">PlayStation 5</span>
+                <span class="badge badge-platform">Xbox Series X|S</span>
+              </dd>
+            </div>
+            <div>
+              <dt class="eyebrow">Développeur</dt>
+              <dd id="game-developers">Sandfall Interactive</dd>
+            </div>
+          </dl>
+
+          <section class="about" aria-labelledby="about-title">
+            <h2 id="about-title" class="display h2 h2--sm">À propos</h2>
+            <div class="prose" id="game-description">
+              <p>Chaque année, la Peintresse se réveille et efface d’un trait tous ceux qui ont atteint l’âge qu’elle inscrit sur son monolithe. L’Expédition 33 part pour briser ce cycle, dans un RPG au tour par tour où esquives et parades se jouent en temps réel…</p>
+            </div>
+            <button class="btn btn-ghost btn-link" id="description-toggle" type="button" aria-expanded="false" aria-controls="game-description">Lire la suite</button>
+          </section>
+
+          <section class="section" aria-labelledby="shots-title">
+            <h2 id="shots-title" class="display h2 h2--sm">Captures d’écran</h2>
+            <!-- Le JS met une <img src="..." alt="" loading="lazy"> dans chaque bouton -->
+            <ul class="list-reset shots" id="screenshots">
+              <li><button class="shot tone-1" type="button" aria-label="Agrandir la capture 1"></button></li>
+              <li><button class="shot tone-2" type="button" aria-label="Agrandir la capture 2"></button></li>
+              <li><button class="shot tone-3" type="button" aria-label="Agrandir la capture 3"></button></li>
+              <li><button class="shot tone-5" type="button" aria-label="Agrandir la capture 4"></button></li>
+              <li><button class="shot tone-10" type="button" aria-label="Agrandir la capture 5"></button></li>
+              <li><button class="shot tone-7" type="button" aria-label="Agrandir la capture 6"></button></li>
+            </ul>
+          </section>
+
+          <section class="reviews" aria-labelledby="reviews-title">
+            <div class="reviews__summary">
+              <h2 id="reviews-title" class="display h2 h2--sm">Avis</h2>
+              <p class="rating-big"><strong class="display" id="reviews-average">4,6</strong><span class="muted">/ 5</span></p>
+              <span class="stars" role="img" aria-label="Moyenne 4,6 sur 5">
+                <svg class="icon i-fill star" width="20" height="20" aria-hidden="true"><use href="#i-star"></use></svg>
+                <svg class="icon i-fill star" width="20" height="20" aria-hidden="true"><use href="#i-star"></use></svg>
+                <svg class="icon i-fill star" width="20" height="20" aria-hidden="true"><use href="#i-star"></use></svg>
+                <svg class="icon i-fill star" width="20" height="20" aria-hidden="true"><use href="#i-star"></use></svg>
+                <svg class="icon i-fill star" width="20" height="20" aria-hidden="true"><use href="#i-star"></use></svg>
+              </span>
+              <p class="small muted" id="reviews-count">128 avis</p>
+              <!-- La largeur de chaque barre vient de la variable --w -->
+              <ul class="list-reset dist" id="reviews-distribution" aria-label="Répartition des notes">
+                <li><span class="dist__label">5</span><span class="bar"><span style="--w: 66%"></span></span><span class="dist__count">84</span></li>
+                <li><span class="dist__label">4</span><span class="bar"><span style="--w: 23%"></span></span><span class="dist__count">29</span></li>
+                <li><span class="dist__label">3</span><span class="bar"><span style="--w: 7%"></span></span><span class="dist__count">9</span></li>
+                <li><span class="dist__label">2</span><span class="bar"><span style="--w: 3%"></span></span><span class="dist__count">4</span></li>
+                <li><span class="dist__label">1</span><span class="bar"><span style="--w: 2%"></span></span><span class="dist__count">2</span></li>
+              </ul>
+            </div>
+
+            <div class="reviews__main">
+              <!-- Formulaire : affiché tant que je n'ai pas d'avis, ou quand je modifie le mien -->
+              <form class="panel review-form" id="review-form" novalidate>
+                <h3 class="h3" id="review-form-title">Donner mon avis</h3>
+                <fieldset class="rating-field">
+                  <legend class="sr-only">Votre note (obligatoire)</legend>
+                  <div class="star-input">
+                    <label><input class="sr-only" type="radio" name="rating" value="1" required><svg class="icon i-fill star" width="30" height="30" aria-hidden="true"><use href="#i-star"></use></svg><span class="sr-only">1 sur 5</span></label>
+                    <label><input class="sr-only" type="radio" name="rating" value="2"><svg class="icon i-fill star" width="30" height="30" aria-hidden="true"><use href="#i-star"></use></svg><span class="sr-only">2 sur 5</span></label>
+                    <label><input class="sr-only" type="radio" name="rating" value="3"><svg class="icon i-fill star" width="30" height="30" aria-hidden="true"><use href="#i-star"></use></svg><span class="sr-only">3 sur 5</span></label>
+                    <label><input class="sr-only" type="radio" name="rating" value="4"><svg class="icon i-fill star" width="30" height="30" aria-hidden="true"><use href="#i-star"></use></svg><span class="sr-only">4 sur 5</span></label>
+                    <label><input class="sr-only" type="radio" name="rating" value="5"><svg class="icon i-fill star" width="30" height="30" aria-hidden="true"><use href="#i-star"></use></svg><span class="sr-only">5 sur 5</span></label>
+                  </div>
+                  <span class="small muted" id="rating-text">Choisissez une note</span>
+                </fieldset>
+                <div class="review-form__grid">
+                  <div class="field review-form__full">
+                    <label for="review-text">Votre avis <span class="field__hint">(facultatif)</span></label>
+                    <textarea id="review-text" name="text" rows="3" maxlength="1000" placeholder="Qu’avez-vous pensé du jeu ?"></textarea>
+                  </div>
+                  <div class="field">
+                    <label for="review-nickname">Pseudo <span class="field__hint">(facultatif)</span></label>
+                    <input id="review-nickname" name="nickname" type="text" maxlength="40" placeholder="Anonyme">
+                  </div>
+                  <div class="review-form__actions">
+                    <button class="btn btn-secondary" id="review-cancel" type="button" hidden>Annuler</button>
+                    <button class="btn btn-primary" id="review-submit" type="submit">Publier mon avis</button>
+                  </div>
+                </div>
+                <p class="form-error" id="review-error" role="alert" hidden></p>
+              </form>
+
+              <!-- Mon avis : remplace le formulaire une fois publié -->
+              <article class="review review--mine" id="my-review" hidden>
+                <div class="review__head">
+                  <span class="avatar avatar--me" aria-hidden="true">V</span>
+                  <div class="review__who">
+                    <span class="review__name">Mon avis <span class="review__date">· publié en <span id="my-review-nickname">Anonyme</span></span></span>
+                    <span class="stars" id="my-review-stars" role="img" aria-label="5 sur 5">
+                      <svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>
+                    </span>
+                  </div>
+                  <button class="btn btn-ghost" id="review-edit" type="button">Modifier</button>
+                  <button class="btn btn-danger" id="review-delete" type="button">Supprimer</button>
+                </div>
+                <p class="review__text" id="my-review-text">Le meilleur RPG de l’année pour moi, la direction artistique est folle.</p>
+              </article>
+
+              <ul class="list-reset review-list" id="review-list">
+                <li>
+                  <article class="review">
+                    <div class="review__head">
+                      <span class="avatar tone-2" aria-hidden="true">L</span>
+                      <div class="review__who">
+                        <span class="review__name">Lune</span>
+                        <time class="review__date" datetime="2026-10-12">il y a 3 jours</time>
+                      </div>
+                      <span class="review__note"><svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>5 / 5</span>
+                    </div>
+                    <p class="review__text">Le système de parade en rythme rend chaque combat tendu. La bande-son m’a suivi des jours après.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="review">
+                    <div class="review__head">
+                      <span class="avatar tone-13" aria-hidden="true">?</span>
+                      <div class="review__who">
+                        <span class="review__name">Anonyme</span>
+                        <time class="review__date" datetime="2026-10-08">il y a 1 semaine</time>
+                      </div>
+                      <span class="review__note"><svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>4 / 5</span>
+                    </div>
+                    <p class="review__text">Superbe, mais quelques pics de difficulté frustrants en fin de partie.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="review">
+                    <div class="review__head">
+                      <span class="avatar tone-5" aria-hidden="true">K</span>
+                      <div class="review__who">
+                        <span class="review__name">Kenji</span>
+                        <time class="review__date" datetime="2026-10-01">il y a 2 semaines</time>
+                      </div>
+                      <span class="review__note"><svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg>5 / 5</span>
+                    </div>
+                    <p class="review__text">Une histoire qui ose. Je n’ai rien vu venir.</p>
+                  </article>
+                </li>
+              </ul>
+
+              <!-- État : aucun avis -->
+              <div class="state state--inline" id="reviews-empty" hidden>
+                <div class="state__icon"><svg class="icon i-fill star" width="22" height="22" aria-hidden="true"><use href="#i-star"></use></svg></div>
+                <div class="state__body">
+                  <strong>Aucun avis pour l’instant</strong>
+                  <span class="small muted">Soyez le premier à noter ce jeu.</span>
+                </div>
+              </div>
+
+              <button class="btn btn-secondary reviews__more" id="reviews-more" type="button">Voir plus d’avis</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- État : chargement de la fiche -->
+    <div id="game-loading" hidden>
+      <p class="sr-only" role="status">Chargement du jeu…</p>
+      <div class="skel skel--hero" aria-hidden="true"></div>
+    </div>
+
+    <!-- État : jeu introuvable -->
+    <div class="wrap" id="game-not-found" hidden>
+      <div class="state">
+        <span class="display state__code" aria-hidden="true">404</span>
+        <h1 class="state__title">Ce jeu s’est perdu dans le brouillard</h1>
+        <p class="state__text">La fiche demandée n’existe pas ou a été retirée du catalogue.</p>
+        <div class="state__actions">
+          <a class="btn btn-primary" href="index.html">Retour à l’accueil</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- État : erreur de chargement -->
+    <div class="wrap" id="game-error" hidden>
+      <div class="state state--error" role="alert">
+        <div class="state__icon"><svg class="icon i-stroke i-thin" width="30" height="30" aria-hidden="true"><use href="#i-warning"></use></svg></div>
+        <h1 class="state__title">Impossible de charger ce jeu</h1>
+        <p class="state__text">Le catalogue ne répond pas pour le moment. Réessayez dans quelques instants.</p>
+        <button class="btn btn-secondary" id="game-retry" type="button">Réessayer</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>Game Finder</span>
+      <span>Données fournies par <a href="https://rawg.io" rel="noopener">RAWG</a></span>
+    </div>
+  </footer>
+
+  <!-- Avis d'un joueur, cloné par le JS -->
+  <template id="tpl-review">
+    <li>
+      <article class="review">
+        <div class="review__head">
+          <span class="avatar" aria-hidden="true"></span>
+          <div class="review__who">
+            <span class="review__name"></span>
+            <time class="review__date" datetime=""></time>
+          </div>
+          <span class="review__note"><svg class="icon i-fill star" width="14" height="14" aria-hidden="true"><use href="#i-star"></use></svg><span class="review__score"></span> / 5</span>
+        </div>
+        <p class="review__text"></p>
+      </article>
+    </li>
+  </template>
+</body>
+</html>
