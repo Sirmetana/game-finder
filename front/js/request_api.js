@@ -28,7 +28,9 @@ export async function getGamesByName(name)
     const apiUrl = CONFIG.RAWG_URL;
 
     try {
-        const response = await fetch(`${apiUrl}/games?key=${apiKey}&search="${name}"&page_size=12&ordering=-rating`);
+        const req = `${apiUrl}/games?key=${apiKey}&search="${name}"&search_precise=true&page_size=15&page=1`;
+        console.log(req);
+        const response = await fetch(req);
         if(!response.ok)
         {
             throw Error(response.statusText);
