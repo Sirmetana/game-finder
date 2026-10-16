@@ -69,7 +69,7 @@ for (let j = 0; j < gamesPlatformsResult.length; j++) {
 
 const divDescription = document.querySelector("#game-description");
 let gameDescription = divDescription.querySelector("p");
-gameDescription.textContent = gameInfo.description;
+gameDescription.textContent = gameInfo.description_raw;
 
 async function verifyFavorite(){
   try {
