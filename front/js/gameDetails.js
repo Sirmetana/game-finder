@@ -1,5 +1,5 @@
 import { getGameById } from "./request_api.js";
-import {addFavorite} from "./favorites_api.js";
+import {addFavorite, getFavoris} from "./favorites_api.js";
 
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
@@ -71,9 +71,34 @@ const divDescription = document.querySelector("#game-description");
 let gameDescription = divDescription.querySelector("p");
 gameDescription.textContent = gameInfo.description;
 
+async function verifyFavorite(){
+  try {
+    const data = await getFavoris()
+
+    const results = data.some((favori) => favori.gameId === Number(gameId))
+    return results
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 const toast = document.getElementById("toast")
 const toastText = document.getElementById("toast-text")
 const fabButton = document.getElementById("fav-button")
+const favLabel = document.getElementById("fav-label")
+
+function showAsFavorite(){
+  fabButton.setAttribute("aria-pressed", "true")
+  favLabel.textContent = "Dans mes favoris"
+}
+
+async function changeFavorite(){
+  const result = await verifyFavorite()
+  if (result){
+    showAsFavorite()
+  }
+}
+changeFavorite()
 fabButton.addEventListener("click", async () => {
   const response = await addFavorite(gameId)
   toast.classList.add("active")
@@ -84,8 +109,10 @@ fabButton.addEventListener("click", async () => {
   } else {
     toast.classList.remove("toast--error")
     toastText.textContent = "Favori ajouté"
+    showAsFavorite()
   }
   setTimeout(() => {
     toast.classList.remove("active")
   }, 2500)
 })
+
