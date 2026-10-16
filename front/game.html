@@ -309,6 +309,14 @@
     </div>
   </footer>
 
+  <!-- Toast : caché par défaut, visible quand le JS ajoute la classe "active".
+       Ajouter aussi "toast--error" pour la version erreur, et changer le texte de #toast-text. -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg class="icon i-stroke i-thin heart toast__icon toast__icon--success" width="20" height="20" aria-hidden="true"><use href="#i-heart"></use></svg>
+    <svg class="icon i-stroke toast__icon toast__icon--error" width="20" height="20" aria-hidden="true"><use href="#i-warning"></use></svg>
+    <p class="toast__text" id="toast-text">Ajouté à vos favoris</p>
+  </div>
+
   <!-- Avis d'un joueur, cloné par le JS -->
   <template id="tpl-review">
     <li>

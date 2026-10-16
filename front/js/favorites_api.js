@@ -29,13 +29,18 @@ export async function removeFavorite(id){
 
 export async function addFavorite(id){
     try {
-        await fetch(`${API_URL}/favorites/${id}`, {
+        const response = await fetch(`${API_URL}/favorites/${id}`, {
             headers: {
                 "X-User-Id": USER_ID
             },
             method: "POST"
         })
+        if (!response.ok){
+            return false
+        }
+        return true
     } catch (e) {
         console.error(e)
+        return false
     }
 }
