@@ -1,35 +1,12 @@
-
+import { getGameById } from "./request_api.js";
 
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
 
 console.log(gameId);
-const url = `https://api.rawg.io/api/games/${gameId}?key=ae1fa64719ad429ca20709d15d791c2f`;
 
 
-async function getGameDetails(gameId) {
-
-  try {
-
-    const response = await fetch(url);
-
-    if (!response) {
-      throw new Error(`game  introuvable (code ${response.status})`);
-    }
-    const gameInfo = await response.json();
-
-    return gameInfo;
-
-  }
-
-  catch (error) {
-    console.error("Erreur :", error.message);
-  }
-
-}
-
-
-const gameInfo = await  getGameDetails(gameId);
+const gameInfo = await  getGameById(gameId);
 const gameContent = document.querySelector("#game-content");
 
 const divimageOne= document.querySelector("#game-hero");
@@ -39,7 +16,6 @@ const divimageTwo = document.querySelector("#game-poster");
 divimageTwo.style.backgroundImage = `url("${ gameInfo.background_image}")`;
 
 const website = document.querySelector("#website");
-
 website.href = gameInfo.website;
 
 const titleGame = document.querySelector(".cover-label");

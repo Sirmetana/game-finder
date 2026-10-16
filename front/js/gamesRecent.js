@@ -8,14 +8,9 @@ const genre = params.get("genre");
 
 let  recentGames =  await getRecentGames();
  recentGames = recentGames.results;
+ const gridGamesRecent = document.querySelector("#recent-track");
 
 for (let i = 0; i < recentGames.length; i++) {
-
-
-
-  const gridGamesRecent = document.querySelector("#recent-track");
-
-
 
 
   const li = document.createElement("li");

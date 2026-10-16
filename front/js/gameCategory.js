@@ -8,12 +8,9 @@ const genre = params.get("genre");
 let  categoryResult =  await getGamesByCategory(genre);
  categoryResult = categoryResult.results;
 
-for (let i = 0; i < categoryResult.length; i++) {
-
-
-
   const gridGames = document.querySelector("#game-grid");
 
+for (let i = 0; i < categoryResult.length; i++) {
 
 
 
