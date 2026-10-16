@@ -1,4 +1,5 @@
 import { getGameById } from "./request_api.js";
+import {addFavorite} from "./favorites_api.js";
 
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
@@ -43,11 +44,11 @@ const gameGenres = document.querySelector("#game-genres");
 
 const gameGenresResult = gameInfo.genres;
 
-for (let i = 0; i < gameGenresResult.lenght; i++) {
+for (let i = 0; i < gameGenresResult.length; i++) {
 
   const genre = document.createElement("span");
   genre.textContent = gameGenresResult[i].name;
-  genre.classList.add("badge , badge-genre");
+  genre.classList.add("badge", "badge-genre");
   gameGenres.appendChild(genre)
 
 }
@@ -69,3 +70,22 @@ for (let j = 0; j < gamesPlatformsResult.length; j++) {
 const divDescription = document.querySelector("#game-description");
 let gameDescription = divDescription.querySelector("p");
 gameDescription.textContent = gameInfo.description;
+
+const toast = document.getElementById("toast")
+const toastText = document.getElementById("toast-text")
+const fabButton = document.getElementById("fav-button")
+fabButton.addEventListener("click", async () => {
+  const response = await addFavorite(gameId)
+  toast.classList.add("active")
+
+  if (!response){
+    toast.classList.add("toast--error")
+    toastText.textContent = "Ce jeu est déjà dans vos favoris"
+  } else {
+    toast.classList.remove("toast--error")
+    toastText.textContent = "Favori ajouté"
+  }
+  setTimeout(() => {
+    toast.classList.remove("active")
+  }, 2500)
+})

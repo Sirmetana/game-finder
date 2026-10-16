@@ -1846,6 +1846,65 @@ textarea {
   }
 }
 
+/* 15. Toast : visible quand le JS ajoute la classe "active"
+   ========================================================================== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--s-6);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  max-width: calc(100% - var(--s-8));
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-menu);
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 16px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  pointer-events: none;
+}
+
+.toast.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.toast__icon--success {
+  color: var(--accent);
+  fill: currentColor;
+}
+
+.toast__icon--error,
+.toast--error .toast__icon--success {
+  display: none;
+}
+
+.toast--error {
+  border-color: var(--danger-line);
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.toast--error .toast__icon--error {
+  display: block;
+  color: var(--danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+}
+
 /* Teintes des visuels de démonstration (remplacées par les images RAWG) */
 .tone-1 { background-color: #4A3B2A; }
 .tone-2 { background-color: #2E3A5E; }
