@@ -10,10 +10,57 @@ let  categoryResult =  await getGamesByCategory(genre);
 
   const gridGames = document.querySelector("#game-grid");
 
+
+  const genreTittle = document.querySelector("#category-breadcrumb");
+  genreTittle.textContent = genre.toUpperCase(); 
+  const categoryTitle = document.querySelector("#category-title");
+  categoryTitle.textContent = genre.toUpperCase(); 
+
+  switch (genre)
+    {
+        case "role-playing-game-rpg":
+            document.querySelector("#rpg").setAttribute("aria-current", "page");
+            break;
+
+        case "action":
+            document.querySelector("#action").setAttribute("aria-current", "page");
+            break;
+            
+              case "indie":
+            document.querySelector("#inde").setAttribute("aria-current", "page");
+            break;
+
+              case "adventure":
+            document.querySelector("#aventure").setAttribute("aria-current", "page");
+            break;
+
+              case "strategy":
+            document.querySelector("#strategie").setAttribute("aria-current", "page");
+            break;
+
+              case "shooter":
+            document.querySelector("#shooter").setAttribute("aria-current", "page");
+            break;
+
+
+              case "racing":
+            document.querySelector("#course").setAttribute("aria-current", "page");
+            break;
+
+              case "puzzle":
+            document.querySelector("#puzzle").setAttribute("aria-current", "page");
+            break;
+
+             case "platformer":
+            document.querySelector("#platforme").setAttribute("aria-current", "page");
+            break;
+  
+
+    }
 for (let i = 0; i < categoryResult.length; i++) {
 
-
-
+ 
+  
   const li = document.createElement("li");
 
   const card = document.createElement("a");
@@ -57,6 +104,7 @@ for (let i = 0; i < categoryResult.length; i++) {
 
   const rating = document.createElement("span");
   rating.textContent = categoryResult[i].rating;
+  rating.className = "espace";
   const span = document.createElement("span");
   span.hidden = true;
   const released = document.createElement("span");
