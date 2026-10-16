@@ -4,7 +4,6 @@ const url = window.location.search;
 const gameName = new URLSearchParams(url).get("name");
 const searchResultsObject =  await getGamesByName(gameName);
 const searchResultsList = searchResultsObject.results;
-console.log(searchResultsList);
 
 searchResultsList.forEach(game => {
     const cardListElement = document.createElement("li");
@@ -35,7 +34,7 @@ searchResultsList.forEach(game => {
     cardRating.height=13;
     cardRatingSpan.textContent= game.rating;
     cardRatingPoint.ariaHidden = "true";
-    cardRatingPoint.textContent = "·";
+    cardRatingPoint.textContent = " · ";
     cardRatingPoint.ariaHidden="true";
     cardRatingStar.href = "#i-star";
 
@@ -61,5 +60,13 @@ searchResultsList.forEach(game => {
     cardListElement.appendChild(cardBody);
 
     document.querySelector("#game-list").appendChild(cardListElement);
+});
+
+const searchBar = document.querySelector("#site-search");
+searchBar.addEventListener("submit", (event) =>
+{
+    event.preventDefault();
+    //alert("error");
+    navigation.navigate(`http://localhost:63342/game-finder/front/search-results.html?name=${searchBar.value}`)
 });
 
