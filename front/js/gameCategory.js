@@ -21,7 +21,7 @@ for (let i = 0; i < categoryResult.length; i++) {
 
   const card = document.createElement("a");
   card.className = "card";
-  card.href = `game.html?id=${[i].id}`;
+  card.href = `game.html?id=${categoryResult[i].id}`;
 
   const cover = document.createElement("div");
   cover.className= "cover";

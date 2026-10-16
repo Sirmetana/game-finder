@@ -40,7 +40,7 @@ divimageTwo.style.backgroundImage = `url("${ gameInfo.background_image}")`;
 
 const website = document.querySelector("#website");
 
-website.href =gameInfo.website;
+website.href = gameInfo.website;
 
 const titleGame = document.querySelector(".cover-label");
 
