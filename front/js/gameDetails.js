@@ -1,6 +1,5 @@
 
 
-
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
 
@@ -8,7 +7,7 @@ console.log(gameId);
 const url = `https://api.rawg.io/api/games/${gameId}?key=ae1fa64719ad429ca20709d15d791c2f`;
 
 
-async function giveGameDetails(gameId) {
+async function getGameDetails(gameId) {
 
   try {
 
@@ -30,7 +29,7 @@ async function giveGameDetails(gameId) {
 }
 
 
-const gameInfo = await  giveGameDetails(gameId);
+const gameInfo = await  getGameDetails(gameId);
 const gameContent = document.querySelector("#game-content");
 
 const divimageOne= document.querySelector("#game-hero");
@@ -39,7 +38,9 @@ divimageOne.style.backgroundImage = `url("${ gameInfo.background_image}")`;
 const divimageTwo = document.querySelector("#game-poster");
 divimageTwo.style.backgroundImage = `url("${ gameInfo.background_image}")`;
 
+const website = document.querySelector("#website");
 
+website.href =gameInfo.website;
 
 const titleGame = document.querySelector(".cover-label");
 
@@ -52,6 +53,7 @@ titleGameTwo.textContent = gameInfo.name;
 const gamereleased = document.querySelector("#game-released");
 
 gamereleased.textContent = gameInfo.released;
+
 
 
 const gameDeveloper = document.querySelector("#game-developer");

@@ -22,7 +22,7 @@ for (let i = 0; i < recentGames.length; i++) {
 
   const card = document.createElement("a");
   card.className = "card";
-  card.href = `game.html?id=${[i].id}`;
+  card.href = `game.html?id=${recentGames[i].id}`;
 
   const cover = document.createElement("div");
   cover.className= "cover";
