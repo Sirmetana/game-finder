@@ -1152,6 +1152,23 @@ textarea {
   background: rgba(13, 16, 21, .7);
 }
 
+.game-list{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.game-card{
+  /*width: 20vw;*/
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 6px;
+}
+
+.game-card{
+  padding-left: 4px;
+}
+
 .game-layout {
   position: relative;
   z-index: 1;
