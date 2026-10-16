@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  
   <!-- Icônes : <svg><use href="#i-..."></use></svg> -->
   <svg xmlns="http://www.w3.org/2000/svg" hidden>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"></path></symbol>
@@ -103,33 +104,7 @@
       <h2 id="games-title" class="sr-only">Liste des jeux</h2>
 
       <ul class="list-reset game-grid" id="game-grid" aria-busy="false">
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-5"><span class="cover-label">The Witcher 3: Wild Hunt</span></div>
-            <div class="card-body">
-              <p class="card-title">The Witcher 3: Wild Hunt</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,7</span><span aria-hidden="true">·</span><span>2015</span></p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-9"><span class="cover-label">Grand Theft Auto V</span></div>
-            <div class="card-body">
-              <p class="card-title">Grand Theft Auto V</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,5</span><span aria-hidden="true">·</span><span>2013</span></p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-8"><span class="cover-label">Portal 2</span></div>
-            <div class="card-body">
-              <p class="card-title">Portal 2</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,6</span><span aria-hidden="true">·</span><span>2011</span></p>
-            </div>
-          </a>
-        </li>
+      
         <li>
           <a class="card" href="game.html">
             <div class="cover tone-12"><span class="cover-label">God of War</span></div>
@@ -214,7 +189,7 @@
             </div>
           </a>
         </li>
-      </ul>
+      </ul>-->
 
       <!-- État : chargement -->
       <div id="games-loading" hidden>
@@ -245,16 +220,6 @@
         <button class="btn btn-secondary" id="games-retry" type="button">Réessayer</button>
       </div>
 
-      <nav class="pager" id="pager" aria-label="Pagination">
-        <span class="pager__disabled" aria-disabled="true">‹ Préc.</span>
-        <a class="pager__num" href="?page=1" aria-current="page">1</a>
-        <a class="pager__num" href="?page=2">2</a>
-        <a class="pager__num" href="?page=3">3</a>
-        <span class="pager__gap" aria-hidden="true">…</span>
-        <a class="pager__num" href="?page=500">500</a>
-        <span class="pager__status">Page <strong>1</strong> / 500</span>
-        <a href="?page=2">Suiv. ›</a>
-      </nav>
     </section>
   </main>
 
@@ -280,5 +245,7 @@
       </a>
     </li>
   </template>
+  <script type="module" src="js/request_api.js"></script>
+  <script type="module" src="js/games.js"></script>
 </body>
 </html>

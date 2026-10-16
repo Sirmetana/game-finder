@@ -74,16 +74,6 @@
           <h1 class="display h1--page" id="category-title">RPG</h1>
           <p class="muted" id="category-count">56 000 jeux</p>
         </div>
-        <div class="select-field">
-          <label for="category-sort">Trier par</label>
-          <!-- Valeurs du paramètre RAWG « ordering » -->
-          <select class="select" id="category-sort">
-            <option value="-added">Popularité</option>
-            <option value="-rating">Note</option>
-            <option value="-released">Date de sortie</option>
-            <option value="name">Nom A → Z</option>
-          </select>
-        </div>
       </div>
     </div>
 
@@ -105,39 +95,7 @@
 
     <section class="section" id="category-games" aria-labelledby="category-title">
       <ul class="list-reset game-grid" id="game-grid" aria-busy="false">
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-1"><span class="cover-label">Clair Obscur: Expedition 33</span></div>
-            <div class="card-body">
-              <p class="card-title">Clair Obscur: Expedition 33</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,8</span><span aria-hidden="true">·</span><span>2025</span></p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-5"><span class="cover-label">The Witcher 3: Wild Hunt</span></div>
-            <div class="card-body">
-              <p class="card-title">The Witcher 3: Wild Hunt</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,7</span><span aria-hidden="true">·</span><span>2015</span></p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-6">
-              <span class="card-fav"><svg class="icon i-stroke i-thin heart" width="16" height="16" aria-hidden="true"><use href="#i-heart"></use></svg><span class="sr-only">Dans mes favoris</span></span>
-              <span class="cover-label">Baldur’s Gate 3</span>
-            </div>
-            <div class="card-body">
-              <p class="card-title">Baldur’s Gate 3</p>
-              <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,5</span><span aria-hidden="true">·</span><span>2023</span></p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="game.html">
-            <div class="cover tone-10"><span class="cover-label">Metaphor: ReFantazio</span></div>
+       <div class="cover tone-10"><span class="cover-label">Metaphor: ReFantazio</span></div>
             <div class="card-body">
               <p class="card-title">Metaphor: ReFantazio</p>
               <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,5</span><span aria-hidden="true">·</span><span>2024</span></p>
@@ -179,7 +137,7 @@
               <p class="card-meta"><svg class="icon i-fill star" width="13" height="13" aria-hidden="true"><use href="#i-star"></use></svg><span>4,4</span><span aria-hidden="true">·</span><span>2024</span></p>
             </div>
           </a>
-        </li>
+        </li>-->
       </ul>
 
       <!-- État : chargement -->
@@ -211,16 +169,6 @@
         <button class="btn btn-secondary" id="games-retry" type="button">Réessayer</button>
       </div>
 
-      <nav class="pager" id="pager" aria-label="Pagination">
-        <span class="pager__disabled" aria-disabled="true">‹ Préc.</span>
-        <a class="pager__num" href="?genre=role-playing-games-rpg&amp;page=1" aria-current="page">1</a>
-        <a class="pager__num" href="?genre=role-playing-games-rpg&amp;page=2">2</a>
-        <a class="pager__num" href="?genre=role-playing-games-rpg&amp;page=3">3</a>
-        <span class="pager__gap" aria-hidden="true">…</span>
-        <a class="pager__num" href="?genre=role-playing-games-rpg&amp;page=140">140</a>
-        <span class="pager__status">Page <strong>1</strong> / 140</span>
-        <a href="?genre=role-playing-games-rpg&amp;page=2">Suiv. ›</a>
-      </nav>
     </section>
 
     <!-- État : genre inconnu (slug absent ou introuvable sur RAWG) -->
@@ -256,5 +204,7 @@
       </a>
     </li>
   </template>
+   <script type="module" src="js/request_api.js"></script>
+  <script type="module" src="js/gameCategory.js"></script>
 </body>
 </html>
