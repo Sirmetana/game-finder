@@ -10,10 +10,15 @@ let  categoryResult =  await getGamesByCategory(genre);
 
   const gridGames = document.querySelector("#game-grid");
 
+
+  const genreTittle = document.querySelector("#category-breadcrumb");
+  genreTittle.textContent = genre.toUpperCase(); 
+  const categoryTitle = document.querySelector("#category-title");
+  categoryTitle.textContent = genre.toUpperCase(); 
 for (let i = 0; i < categoryResult.length; i++) {
 
-
-
+ 
+  
   const li = document.createElement("li");
 
   const card = document.createElement("a");
@@ -57,6 +62,7 @@ for (let i = 0; i < categoryResult.length; i++) {
 
   const rating = document.createElement("span");
   rating.textContent = categoryResult[i].rating;
+  rating.className = "espace";
   const span = document.createElement("span");
   span.hidden = true;
   const released = document.createElement("span");
