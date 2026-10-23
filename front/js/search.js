@@ -66,7 +66,7 @@ const searchBar = document.querySelector("#site-search");
 searchBar.addEventListener("submit", (event) =>
 {
     event.preventDefault();
-    //alert("error");
-    navigation.navigate(`http://localhost:63342/game-finder/front/search-results.html?name=${searchBar.value}`)
+    const inputValue = searchBar.querySelector(".search #search-input").value.replaceAll(" ", "&");
+    navigation.navigate(`http://localhost:63342/game-finder/front/search-results.html?name=${inputValue}`)
 });
 
